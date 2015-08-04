@@ -44,9 +44,17 @@ gulp.task('css:sass', function(){
 gulp.task('style', function(){
     return gulp.src('./tmp/css/*.css')
         .pipe($.concat('qsh-lite.css'))
+        .pipe($.autoprefixer({
+            browsers: ['last 10 versions'],
+            cascade: false
+        }))
         .pipe(gulp.dest('./dist/css'))
         .pipe($.csso())
         .pipe($.concat('qsh-lite-min.css'))
+        .pipe($.autoprefixer({
+            browsers: ['last 10 versions'],
+            cascade: false
+        }))
         .pipe(gulp.dest('./dist/css'))
         .pipe($.size({title: 'styles'}));
 });
