@@ -6,7 +6,7 @@ var del = require('del');
 gulp.task('script', function(){
     var sources = [
         'qsh-lite.js',
-        'head/js/head.js',
+        'header/js/head.js',
         'loading/js/spinner.js',
         'module/js/module.js'
     ];
@@ -22,7 +22,7 @@ gulp.task('script', function(){
 
 gulp.task('css:less', function(){
     var sources = [
-        'head/css/head.less',
+        'header/css/head.less',
         'module/css/module.less'
     ];
 
