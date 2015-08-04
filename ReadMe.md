@@ -4,7 +4,7 @@
 
 调用方式
 
-工具集合作为全站通用依赖已经更新到qsh-resource
+工具集合作为全站通用依赖已经更新到[qsh-resource](https://github.com/guanyx/qshResource)
 ```js
 //如果没有安装qsh-resource
 npm install qsh-resource --save-dev
