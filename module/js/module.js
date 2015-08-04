@@ -68,7 +68,7 @@
         spinner.classList.add(spinner_class);
 
         var refresh = document.createElement('a');
-        refresh.textContent = '重试';
+        refresh.textContent = '点击重试';
         refresh.classList.add(refresh_class);
 
         refresh.addEventListener('click', function(){

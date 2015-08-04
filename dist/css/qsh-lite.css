@@ -108,15 +108,16 @@
 }
 
 .qsh-module-load {
-  height: 40px;
+  height: 30px;
   width: 100%;
   margin-top: -20px;
   position: absolute;
   top: 50%;
   left: 0;
-  line-height: 40px;
+  line-height: 30px;
   text-align: center;
   z-index: 9999;
+  font-size: 12px;
 }
 .qsh-module-load-spinner {
   height: 30px;
@@ -128,6 +129,7 @@
 .qsh-module-load-text {
   display: inline;
   vertical-align: middle;
+  color: #333;
 }
 .qsh-module-load-refresh {
   color: #0040D0;
