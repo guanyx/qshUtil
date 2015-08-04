@@ -18,6 +18,7 @@ npm update
 qshUtil.spinner(options)    //加载进度条
 qshUtil.header(options)     //移动端页面通用头部
 qshUtil.module(options)     //模块加载
+...更多功能等待开发
 ```
 
 具体的使用说明，请点开每一个项目的文件夹查看
