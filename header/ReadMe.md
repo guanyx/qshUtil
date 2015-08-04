@@ -66,6 +66,7 @@ name: 名称。 即中间部分的title
 style: 样式。 可不传，默认为卖家版的浅灰色头部。custom为买家版的红色头部
 leftItems: 坐边元素。可不传。默认会带有一个返回
     itemObj： icon: icon为iconfont中图标对应的名称。返回图标的icon固定为back。
+              fixed: 布尔类型，默认头部会固定在顶部
               handler: handler为图标点击时的回调函数，back的处理略不同，back会默认调用history.back()。如果传入的handler返回false，则back不执行默认行为。
               text: 如果需要显示文字按钮，则传入text，不可同时传入icon
               hasActive: 如果为true，则在图标的右上角显示一个角标

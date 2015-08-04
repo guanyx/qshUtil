@@ -63,7 +63,7 @@
         history.back();
     }
 
-    function appendSkeleton(name, style){
+    function appendSkeleton(name, style, fixed){
         var html = compileTpl(skeleton_dom, {
             name: name
         });
@@ -74,6 +74,13 @@
         if(style){
             $head.addClass(style);
         }
+
+        var default_position = 'fixed';
+        if(!fixed){
+            default_position = 'relative';
+        }
+
+        $head.css('position', default_position);
     }
 
     function appendBack(icon, cb){
