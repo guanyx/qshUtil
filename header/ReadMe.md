@@ -56,7 +56,7 @@ var options = {
             }
         ]
     };
-    var headerObj = qshHeader(options);
+    var headerObj = qshUtil.header(options);
 ```
 
 参数说明：
