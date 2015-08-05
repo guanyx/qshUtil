@@ -76,7 +76,7 @@
         }
 
         var default_position = 'fixed';
-        if(!fixed){
+        if(fixed === false){
             default_position = 'relative';
         }
 
