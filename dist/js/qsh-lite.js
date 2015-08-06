@@ -97,7 +97,7 @@
         }
 
         var default_position = 'fixed';
-        if(!fixed){
+        if(fixed === false){
             default_position = 'relative';
         }
 
@@ -210,7 +210,7 @@
 
     function init(options){
         $mount = $(options.mount);
-        appendSkeleton(options.name, options.style);
+        appendSkeleton(options.name, options.style, options.fixed);
 
         if(options.leftItems && options.leftItems.length){
             appendLeft(options.leftItems);
