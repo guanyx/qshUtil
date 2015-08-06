@@ -212,9 +212,7 @@
         $mount = $(options.mount);
         appendSkeleton(options.name, options.style, options.fixed);
 
-        if(options.leftItems && options.leftItems.length){
-            appendLeft(options.leftItems);
-        }
+        appendLeft(options.leftItems || []);
 
         if(options.rightItems && options.rightItems.length){
             addRight(options.rightItems);
