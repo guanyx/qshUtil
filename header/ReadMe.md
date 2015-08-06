@@ -71,8 +71,7 @@ leftItems: 坐边元素。可不传。默认会带有一个返回
               text: 如果需要显示文字按钮，则传入text，不可同时传入icon
               hasActive: 如果为true，则在图标的右上角显示一个角标
               items: 如果传入items，则为当前按钮创建一个下拉菜单
-              id: 当前按钮的标识符，可不传，不传则默认为icon或者text
-             
+              id: 当前按钮的标识符，可不传，不传则默认为icon或者text。返回必须传入id为'back'
 </pre>
 
 返回**headerObj**
