@@ -15,11 +15,11 @@
 }
 .head .head_left {
   float: left;
-  padding-left: 15px;
+  padding-left: 10px;
 }
 .head .head_right {
   float: right;
-  padding-right: 15px;
+  padding-right: 10px;
 }
 .head .head_left,
 .head .head_right {
