@@ -8,7 +8,9 @@ gulp.task('script', function(){
         'qsh-lite.js',
         'header/js/head.js',
         'loading/js/spinner.js',
-        'module/js/module.js'
+        'module/js/module.js',
+        'fixed/js/fixed.js',
+        'top/top.js'
     ];
 
     return gulp.src(sources)
@@ -23,7 +25,8 @@ gulp.task('script', function(){
 gulp.task('css:less', function(){
     var sources = [
         'header/css/head.less',
-        'module/css/module.less'
+        'module/css/module.less',
+        'top/top.less'
     ];
 
     return gulp.src(sources)

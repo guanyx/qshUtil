@@ -5,6 +5,7 @@
   position: relative;
   left: 0;
   top: 0;
+  z-index: 99999999;
   border-bottom: 1px solid #d0d0d0;
   color: #333;
   background-color: #eeeeee;
@@ -619,3 +620,32 @@
   to {
     -webkit-transform: rotate(-130deg);
     transform: rotate(-130deg); } }
+
+#qsh-back-top {
+  position: fixed;
+  bottom: 55px;
+  right: 10px;
+  width: 45px;
+  height: 45px;
+  border: 2px solid #777;
+  -webkit-border-radius: 50%;
+  border-radius: 50%;
+  text-align: center;
+  color: #777;
+  background-color: #FFFFFF;
+  opacity: .7;
+  z-index: 9999999999;
+  display: none;
+}
+#qsh-back-top i {
+  font-size: 20px;
+  color: #000;
+}
+#qsh-back-top div {
+  font-size: 12px;
+  line-height: 1;
+  margin-top: -3px;
+}
+#qsh-back-top:hover {
+  opacity: 1;
+}

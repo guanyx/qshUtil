@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta HTTP-EQUIV="Pragma" CONTENT="no-cache">
+    <meta HTTP-EQUIV="Cache-Control" CONTENT="no-cache">
+    <meta HTTP-EQUIV="Expires" CONTENT="0">
+    <title>Page</title>
+</head>
+<body>
+<div style="height: 1000px;"></div>
+<div id="fixed">fixed</div>
+<div style="height: 1000px;"></div>
+<script src="http://libs.useso.com/js/jquery/2.1.1/jquery.min.js"></script>
+<script src="../../dist/js/qsh-lite-min.js"></script>
+<script>
+qshUtil.fixed('#fixed', {
+    top: '50px',
+    left: '0'
+})
+</script>
+</body>
+</html>
