@@ -6,11 +6,14 @@ var del = require('del');
 gulp.task('script', function(){
     var sources = [
         'qsh-lite.js',
+        'util/js/util.js',
         'header/js/head.js',
+        'header/js/preHead.js',
         'loading/js/spinner.js',
         'module/js/module.js',
         'fixed/js/fixed.js',
-        'top/top.js'
+        'top/top.js',
+        'toast/js/toast.js'
     ];
 
     return gulp.src(sources)
@@ -25,8 +28,10 @@ gulp.task('script', function(){
 gulp.task('css:less', function(){
     var sources = [
         'header/css/head.less',
+        'header/css/pre.less',
         'module/css/module.less',
-        'top/top.less'
+        'top/top.less',
+        'toast/css/toast.less'
     ];
 
     return gulp.src(sources)

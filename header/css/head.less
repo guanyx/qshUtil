@@ -1,3 +1,4 @@
+@import "var";
 .head{
   @background-color: #eee;
   @border-color: #d0d0d0;
@@ -6,7 +7,6 @@
 
   width: 100%;
   height: @head-height;
-  line-height: @head-height - 1px;
   position: relative;
   left: 0;
   top: 0;
@@ -16,33 +16,57 @@
   color: #333;
   background-color: @background-color;
   user-select: none;
+  .head-name{
+    width: 100%;
+    height: 100%;
+    line-height: @head-height - 1px;
+    position: absolute;
+    left: 0;
+    top: 0;
+    font-size: 16px;
+    text-align: center;
+    font-weight: bold;
+    z-index: 1;
+  }
+
+  .head-table{
+    display: table;
+    height: 100%;
+    width: 100%;
+    position: relative;
+    z-index: 2;
+  }
 
   .head_left{
-    float: left;
     padding-left: 10px;
   }
 
   .head_right{
-    float: right;
     padding-right: 10px;
   }
 
   .head_left,
   .head_right{
+    display: table-cell;
     position: relative;
+    width: 1%;
     z-index: 2;
+    white-space: nowrap;
+    vertical-align: middle;
   }
 
   .head_title{
-    position: absolute;
+    line-height: @head-height - 1px;
+    position: relative;
+    display: table-cell;
+    float: left;
     height: 100%;
     width: 100%;
-    font-size: 15px;
+    font-size: 16px;
     text-align: center;
   }
 
   .head_icon{
-    height: @head-height - 1px;
     display: inline-block;
     padding: 0 5px;
     position: relative;
@@ -59,7 +83,17 @@
 
   .head_menus_item:active,
   .head_icon:active{
-    background-color: @active-color;
+    //background-color: @active-color;
+  }
+
+  .qsh-head-menu{
+    position: absolute;
+    right: 3px;
+    top: 100%;
+    margin-top: -8px;
+    display: none;
+    opacity: 0;
+    transition: opacity .15s ease-in-out;
   }
 
   .head_menus{
@@ -79,6 +113,20 @@
     transition: opacity .15s ease-in-out;
   }
 
+  .qsh-head-arrow{
+    position: absolute;
+    right: 12px;
+    top: 2px;
+    width: 0;
+    height: 0;
+    border-color: transparent;
+    border-style: solid;
+    margin-left: -8px;
+    border-width: 0 8px 8px;
+    border-bottom-color: rgba(104,104,104,.95);
+  }
+
+  .qsh-head-menu.show,
   .head_menus.show{
     opacity: 1;
   }
@@ -93,16 +141,23 @@
       font-size: 20px;
       margin-right: 10px;
     }
+  }
 
-    .icon-active-wrapper{
+  .qsh-head-menu-item{
+    padding-right: 10px;
+    i{
+      margin-right: 10px;
+    }
+  }
+
+  .icon-active-wrapper{
+    display: inline-block;
+    float: right;
+    height: 100%;
+
+    .icon_active{
       display: inline-block;
-      float: right;
-      height: 100%;
-
-      .icon_active{
-        display: inline-block;
-        vertical-align: middle;
-      }
+      vertical-align: middle;
     }
   }
 
@@ -115,17 +170,16 @@
 }
 
 .head.custom{
-  @background-color: #C40001;
-  background-color: @background-color;
+  background-color: @custom-background-color;
   color: #FFFFFF;
   border-bottom: 1px solid #e40001;
 
   .head_menus{
-    background-color: @background-color;
+    background-color: @custom-background-color;
   }
 
   .head_menus_item:active,
   .head_icon:active{
-    background-color: #e40001;
+    //background-color: #e40001;
   }
 }

@@ -1,7 +1,6 @@
 .head {
   width: 100%;
   height: 45px;
-  line-height: 44px;
   position: relative;
   left: 0;
   top: 0;
@@ -14,28 +13,51 @@
   -ms-user-select: none;
   user-select: none;
 }
+.head .head-name {
+  width: 100%;
+  height: 100%;
+  line-height: 44px;
+  position: absolute;
+  left: 0;
+  top: 0;
+  font-size: 16px;
+  text-align: center;
+  font-weight: bold;
+  z-index: 1;
+}
+.head .head-table {
+  display: table;
+  height: 100%;
+  width: 100%;
+  position: relative;
+  z-index: 2;
+}
 .head .head_left {
-  float: left;
   padding-left: 10px;
 }
 .head .head_right {
-  float: right;
   padding-right: 10px;
 }
 .head .head_left,
 .head .head_right {
+  display: table-cell;
   position: relative;
+  width: 1%;
   z-index: 2;
+  white-space: nowrap;
+  vertical-align: middle;
 }
 .head .head_title {
-  position: absolute;
+  line-height: 44px;
+  position: relative;
+  display: table-cell;
+  float: left;
   height: 100%;
   width: 100%;
-  font-size: 15px;
+  font-size: 16px;
   text-align: center;
 }
 .head .head_icon {
-  height: 44px;
   display: inline-block;
   padding: 0 5px;
   position: relative;
@@ -48,9 +70,15 @@
   top: -3px;
   right: -3px;
 }
-.head .head_menus_item:active,
-.head .head_icon:active {
-  background-color: #cccccc;
+.head .qsh-head-menu {
+  position: absolute;
+  right: 3px;
+  top: 100%;
+  margin-top: -8px;
+  display: none;
+  opacity: 0;
+  -webkit-transition: opacity 0.15s ease-in-out;
+  transition: opacity 0.15s ease-in-out;
 }
 .head .head_menus {
   position: absolute;
@@ -68,6 +96,19 @@
   -webkit-transition: opacity 0.15s ease-in-out;
   transition: opacity 0.15s ease-in-out;
 }
+.head .qsh-head-arrow {
+  position: absolute;
+  right: 12px;
+  top: 2px;
+  width: 0;
+  height: 0;
+  border-color: transparent;
+  border-style: solid;
+  margin-left: -8px;
+  border-width: 0 8px 8px;
+  border-bottom-color: rgba(104, 104, 104, 0.95);
+}
+.head .qsh-head-menu.show,
 .head .head_menus.show {
   opacity: 1;
 }
@@ -81,12 +122,18 @@
   font-size: 20px;
   margin-right: 10px;
 }
-.head .head_menus_item .icon-active-wrapper {
+.head .qsh-head-menu-item {
+  padding-right: 10px;
+}
+.head .qsh-head-menu-item i {
+  margin-right: 10px;
+}
+.head .icon-active-wrapper {
   display: inline-block;
   float: right;
   height: 100%;
 }
-.head .head_menus_item .icon-active-wrapper .icon_active {
+.head .icon-active-wrapper .icon_active {
   display: inline-block;
   vertical-align: middle;
 }
@@ -104,10 +151,6 @@
 }
 .head.custom .head_menus {
   background-color: #c40001;
-}
-.head.custom .head_menus_item:active,
-.head.custom .head_icon:active {
-  background-color: #e40001;
 }
 
 .qsh-module-load {
@@ -139,6 +182,54 @@
   margin-left: 10px;
   cursor: pointer;
   vertical-align: middle;
+}
+
+.head-search {
+  display: inline-block;
+  line-height: 1;
+  width: 100%;
+  padding: 0 15px;
+}
+.head-search .head-search-bottom {
+  height: 8px;
+  border: 1px solid #FFFFFF;
+  border-top: none;
+}
+.head-search .head-search-input-wrapper {
+  color: #FFFFFF;
+  padding: 0 20px;
+  position: relative;
+}
+.head-search i {
+  position: absolute;
+  left: 20px;
+  top: 0;
+  color: #FFFFFF;
+}
+.head-search input {
+  color: #FFFFFF;
+  border: 0;
+  outline: 0;
+  width: 100%;
+  margin-left: 20px;
+  padding: 0 25px 0 5px;
+  background-color: #c40001;
+}
+.head-search input::-webkit-input-placeholder {
+  /* WebKit browsers */
+  color: #ddd;
+}
+.head-search input:-moz-placeholder {
+  /* Mozilla Firefox 4 to 18 */
+  color: #ddd;
+}
+.head-search input::-moz-placeholder {
+  /* Mozilla Firefox 19+ */
+  color: #ddd;
+}
+.head-search input:-ms-input-placeholder {
+  /* Internet Explorer 10+ */
+  color: #ddd;
 }
 
 /**
@@ -621,6 +712,27 @@
     -webkit-transform: rotate(-130deg);
     transform: rotate(-130deg); } }
 
+.qsh-toast {
+  padding: 5px 10px;
+  font-size: 12px;
+  color: #FFFFFF;
+  opacity: 0;
+  position: fixed;
+  display: none;
+  bottom: 70px;
+  left: 50%;
+  -webkit-border-radius: 3px;
+  border-radius: 3px;
+  background: #222;
+  -webkit-transform: translateX(-50%);
+  -ms-transform: translateX(-50%);
+  transform: translateX(-50%);
+  -webkit-box-shadow: 0 0 12px #999999;
+  box-shadow: 0 0 12px #999999;
+  -webkit-transition: opacity 400ms ease-in-out;
+  transition: opacity 400ms ease-in-out;
+}
+
 #qsh-back-top {
   position: fixed;
   bottom: 55px;
@@ -645,7 +757,4 @@
   font-size: 12px;
   line-height: 1;
   margin-top: -3px;
-}
-#qsh-back-top:hover {
-  opacity: 1;
 }
