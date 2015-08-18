@@ -12,7 +12,14 @@
 
     function addFixed(ele, position){
         var $ele = $(ele);
-        var ele_top = $ele.offset().top - (parseInt(position.top) || 0);
+
+        var wrap = $('<div></div>');
+        wrap.css({
+            height: $ele.height() + 'px',
+            width: $ele.width() + 'px'
+        });
+        $ele.wrap(wrap);
+        var $wrap = $ele.parent('div');
         var origin = {
             position: $ele.css('position'),
             left: $ele.css('left'),
@@ -21,6 +28,7 @@
             bottom: $ele.css('bottom')
         };
         callbacks.push(function(height){
+            var ele_top = $wrap.offset().top - (parseInt(position.top) || 0);
             if(height >= ele_top){
                 $ele.css({
                     position: 'fixed'

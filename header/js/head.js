@@ -37,6 +37,20 @@
             handler: function(){
                 location.href = '/m-center/index.html'
             }
+        },
+        'lianxi': {
+            name: '联系我们',
+            icon: 'lianxi',
+            handler: function(){
+                location.href = '/ad/contact-us.html'
+            }
+        },
+        'gouwuche': {
+            name: '购物车',
+            icon: 'gouwuche2',
+            handler: function(){
+                location.href = '/shopping/shopping.jsp';
+            }
         }
     };
 
@@ -124,6 +138,13 @@
         var domOp = 'appendTo';
         if(pre){
             domOp = 'prependTo';
+        }
+
+        if(typeof item === 'string'){
+            item = preMenu[item];
+            if(typeof item === 'undefined'){
+                return;
+            }
         }
 
         var map_id;

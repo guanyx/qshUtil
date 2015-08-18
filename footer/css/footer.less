@@ -1,0 +1,32 @@
+.qsh-footer{
+  height: 50px;
+  width: 100%;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+
+  background: #FFFFFF;
+  color: #999999;
+
+  outline: 1px solid #e7e7e7;
+
+  display: table;
+
+  &-item{
+    display: table-cell;
+    vertical-align: middle;
+    text-align: center;
+
+    i{
+      font-size: 22px;
+    }
+
+    div{
+      font-size: 12px;
+    }
+  }
+
+  &-item.current-foot{
+    color: #CC0000;
+  }
+}
