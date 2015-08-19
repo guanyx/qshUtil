@@ -70,6 +70,31 @@
         var size_str = '_' + pic_size + 'x' + pic_size;
         return size_str;
     }
+
+    function getQueryStringByName(name){
+        var result = location.search.match(new RegExp("[\?\&]" + name+ "=([^\&]+)","i"));
+        if(result == null || result.length < 1){
+            return "";
+        }
+        return result[1];
+    }
+
+    qshRegister({
+        name: 'queryString',
+        entry: getQueryStringByName
+    });
+
+    qshRegister({
+        name: 'localStorage',
+        entry: function(key, value){
+            if(value){
+                localStorage.setItem(key, value);
+            }
+            else {
+                return localStorage.getItem(key);
+            }
+        }
+    })
 })(window);
 (function (global) {
     'use strict';
@@ -673,6 +698,7 @@
 
     function addFixed(ele, position){
         var $ele = $(ele);
+        var fixed = false;
 
         var wrap = $('<div></div>');
         wrap.css({
@@ -691,12 +717,19 @@
         callbacks.push(function(height){
             var ele_top = $wrap.offset().top - (parseInt(position.top) || 0);
             if(height >= ele_top){
+                if(fixed){
+                    return;
+                }
                 $ele.css({
                     position: 'fixed'
                 }).css(position);
+                fixed = true;
             }
             else {
-                $ele.css(origin);
+                if(fixed){
+                    $ele.css(origin);
+                    fixed = false;
+                }
             }
         });
     }

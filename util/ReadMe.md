@@ -24,3 +24,19 @@ qshUtil.resizeImg(img2_size, img2); //http://m.8673h.com/images/pro_pic_150x150.
 //根据手机像素比调整大小。以IPhone6为例，IPhone6的像素比为3
 qshUtil.resizeImg(img2_size, img2); //http://m.8673h.com/images/pro_pic_400x400.png
 ```
+
+####queryString
+获取url参数
+
+```js
+//location.href = 'http://www.baidu.com/?name=abc'
+qshUtil.queryString('name') //abc
+```
+
+####localStorage
+操作localStorage
+
+```js
+qshUtil.localStorage(key, value)    //保存key数据到localStorage
+qshUtil.localStorage(key)   //读取key的值
+```
