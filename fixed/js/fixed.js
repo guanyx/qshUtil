@@ -16,8 +16,7 @@
 
         var wrap = $('<div></div>');
         wrap.css({
-            height: $ele.height() + 'px',
-            width: $ele.width() + 'px'
+            height: $ele.height() + 'px'
         });
         $ele.wrap(wrap);
         var $wrap = $ele.parent('div');

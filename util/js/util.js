@@ -5,7 +5,8 @@
         var reg = /{{(.*?)}}/g;
         var result;
         while(result = reg.exec(str)){
-            str = str.replace(result[0], obj[result[1]] || '');
+            var value = typeof obj[result[1]] === 'undefined' ? '' : obj[result[1]];
+            str = str.replace(result[0], value);
             reg.lastIndex = 0;
         }
         return str;

@@ -14,7 +14,8 @@ gulp.task('script', function(){
         'fixed/js/fixed.js',
         'top/top.js',
         'toast/js/toast.js',
-        'footer/js/footer.js'
+        'footer/js/footer.js',
+        'alert/js/alert.js'
     ];
 
     return gulp.src(sources)
@@ -33,7 +34,8 @@ gulp.task('css:less', function(){
         'module/css/module.less',
         'top/top.less',
         'toast/css/toast.less',
-        'footer/css/footer.less'
+        'footer/css/footer.less',
+        'alert/css/alert.less'
     ];
 
     return gulp.src(sources)

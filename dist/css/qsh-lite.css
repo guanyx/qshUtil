@@ -1,3 +1,97 @@
+.qsh-util-alert {
+  position: fixed;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  padding: 0 20px;
+  background-color: rgba(0, 0, 0, 0);
+  display: none;
+  -webkit-transition: all 300ms ease-in-out;
+  transition: all 300ms ease-in-out;
+}
+.qsh-util-alert-box {
+  background-color: #FFFFFF;
+  width: 100%;
+  position: absolute;
+  top: 50%;
+  left: 0;
+  text-align: center;
+  -webkit-transform: translateY(-50%) scale(0.9);
+  -ms-transform: translateY(-50%) scale(0.9);
+  transform: translateY(-50%) scale(0.9);
+  opacity: 0;
+  -webkit-border-radius: 5px;
+  border-radius: 5px;
+  -webkit-transition: all 200ms ease-in-out 100ms;
+  transition: all 200ms ease-in-out 100ms;
+  padding: 10px;
+}
+.qsh-util-alert-box .iconfont {
+  font-size: 40px;
+}
+.qsh-util-alert-icon {
+  line-height: 1;
+}
+.qsh-util-alert-btns {
+  margin-top: 10px;
+}
+.qsh-util-alert-btn {
+  width: 85px;
+  height: 30px;
+  line-height: 28px;
+  border: 1px solid #db4642;
+  display: inline-block;
+  margin: 0 7px;
+  -webkit-border-radius: 3px;
+  border-radius: 3px;
+  font-size: 15px;
+}
+.qsh-util-alert-cancel {
+  background-color: #FFFFFF;
+  color: #db4642;
+}
+.qsh-util-alert-ok {
+  background-color: #db4642;
+  color: #FFFFFF;
+}
+.qsh-util-alert-type {
+  font-size: 18px;
+  font-weight: 700;
+  letter-spacing: 5px;
+  padding-left: 5px;
+}
+.qsh-util-alert-msg {
+  font-size: 12px;
+  color: #aaaaaa;
+}
+.qsh-util-alert .icon-jinggao {
+  color: #ffd9ac;
+}
+.qsh-util-alert .icon-chenggongalert {
+  color: #c8eebb;
+}
+.qsh-util-alert .icon-shibai {
+  color: #fcbcba;
+}
+.qsh-util-alert .icon-tishi {
+  color: #b6dff3;
+}
+.qsh-util-inner {
+  position: relative;
+  height: 100%;
+  width: 100%;
+}
+.qsh-util-alert.qsh-util-show {
+  background-color: rgba(0, 0, 0, 0.6);
+}
+.qsh-util-alert.qsh-util-show .qsh-util-alert-box {
+  -webkit-transform: translateY(-50%) scale(1);
+  -ms-transform: translateY(-50%) scale(1);
+  transform: translateY(-50%) scale(1);
+  opacity: 1;
+}
+
 .qsh-footer {
   height: 50px;
   width: 100%;
@@ -762,6 +856,9 @@
   transition: opacity 400ms ease-in-out;
 }
 
+.modal-open #qsh-back-top {
+  display: none !important;
+}
 #qsh-back-top {
   position: fixed;
   bottom: 55px;

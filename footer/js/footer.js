@@ -24,7 +24,7 @@
         }
     };
 
-    var default_item = ['index', 'uCenter', 'baoyang', 'contact'];
+    var default_item = ['index', 'baoyang', 'contact', 'uCenter'];
     var item_template = '<div class="qsh-footer-item {{classes}}" data-href="{{href}}" style="width: {{percent}}%;"> <i class="iconfont icon-{{icon}}"></i> <div>{{text}}</div></div>';
     var wrapper_template = '<div class="qsh-footer">{{content}}</div>';
 
