@@ -18,3 +18,8 @@ var qsh_page_urls = {
     'review': '/brand/prod_pingj.jsp'                   //评价
 };
 ```
+
+###使用示例
+```js
+location.href = qsh_page_urls.login + '?url=xxx';    //跳转到登录页
+```
