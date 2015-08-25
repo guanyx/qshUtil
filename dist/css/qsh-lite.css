@@ -5,6 +5,7 @@
   top: 0;
   bottom: 0;
   padding: 0 20px;
+  z-index: 20000;
   background-color: rgba(0, 0, 0, 0);
   display: none;
   -webkit-transition: all 300ms ease-in-out;
@@ -62,7 +63,8 @@
   padding-left: 5px;
 }
 .qsh-util-alert-msg {
-  font-size: 12px;
+  margin-top: 5px;
+  font-size: 14px;
   color: #aaaaaa;
 }
 .qsh-util-alert .icon-jinggao {
@@ -854,6 +856,7 @@
   box-shadow: 0 0 12px #999999;
   -webkit-transition: opacity 400ms ease-in-out;
   transition: opacity 400ms ease-in-out;
+  z-index: 10000;
 }
 
 .modal-open #qsh-back-top {

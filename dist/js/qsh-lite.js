@@ -28,7 +28,7 @@
         while(result = reg.exec(str)){
             var value = typeof obj[result[1]] === 'undefined' ? '' : obj[result[1]];
             str = str.replace(result[0], value);
-            reg.lastIndex = 0;
+            reg.lastIndex -= result[0].length;
         }
         return str;
     }
@@ -64,7 +64,7 @@
         pic_size = main_size + rest_size;
         if(pic_size < 100){
             pic_size = 100;
-        }else if(pic_size > 800){
+        }else if(pic_size > 700){
             pic_size = 800
         }
 
@@ -197,7 +197,12 @@
     }
 
     function back(){
-        history.back();
+        if(qsh_object.shell === 'qsh'){
+            //调用APP接口返回
+        }
+        else {
+            history.back();
+        }
     }
 
     function appendSkeleton(options, style, fixed){

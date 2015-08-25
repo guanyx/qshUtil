@@ -1,0 +1,1 @@
+var qsh_object = {};

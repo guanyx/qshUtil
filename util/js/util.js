@@ -7,7 +7,7 @@
         while(result = reg.exec(str)){
             var value = typeof obj[result[1]] === 'undefined' ? '' : obj[result[1]];
             str = str.replace(result[0], value);
-            reg.lastIndex = 0;
+            reg.lastIndex -= result[0].length;
         }
         return str;
     }
@@ -43,7 +43,7 @@
         pic_size = main_size + rest_size;
         if(pic_size < 100){
             pic_size = 100;
-        }else if(pic_size > 800){
+        }else if(pic_size > 700){
             pic_size = 800
         }
 

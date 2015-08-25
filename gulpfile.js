@@ -79,13 +79,20 @@ gulp.task('styles', function(done){
     )
 });
 
+gulp.task('topScript', function(){
+    return gulp.src('topScript/src/*.js')
+        .pipe($.concat('top.js'))
+        .pipe($.uglify())
+        .pipe(gulp.dest('topScript/dist'));
+});
+
 gulp.task('clean', function(){
     return del(['./tmp']);
 });
 
 gulp.task('default', function(done){
     sequence(
-        ['script', 'styles'],
+        ['script', 'styles', 'topScript'],
         'clean',
         done
     )
