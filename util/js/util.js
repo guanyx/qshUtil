@@ -74,5 +74,24 @@
                 return localStorage.getItem(key);
             }
         }
+    });
+
+    qshRegister({
+        name: 'uncertainImage',
+        entry: function(image, src, replace){
+            var img = new Image();
+            img.onload = function(){
+                image.src = src;
+            };
+
+            img.onerror = function(){
+                image.src = replace;
+            };
+
+            img.src = src;
+            if(img.complete){
+                image.src = src;
+            }
+        }
     })
 })(window);

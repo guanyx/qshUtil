@@ -15,7 +15,8 @@ gulp.task('script', function(){
         'top/top.js',
         'toast/js/toast.js',
         'footer/js/footer.js',
-        'alert/js/alert.js'
+        'alert/js/alert.js',
+        'modal/modal.js'
     ];
 
     return gulp.src(sources)
@@ -35,7 +36,8 @@ gulp.task('css:less', function(){
         'top/top.less',
         'toast/css/toast.less',
         'footer/css/footer.less',
-        'alert/css/alert.less'
+        'alert/css/alert.less',
+        'modal/modal.less'
     ];
 
     return gulp.src(sources)
@@ -64,7 +66,7 @@ gulp.task('style', function(){
         .pipe($.csso())
         .pipe($.concat('qsh-lite-min.css'))
         .pipe($.autoprefixer({
-            browsers: ['last 10 versions'],
+            browsers: ['last 20 versions'],
             cascade: false
         }))
         .pipe(gulp.dest('./dist/css'))

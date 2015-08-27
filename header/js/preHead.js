@@ -28,6 +28,31 @@
                     }
                 ]
             })
+        },
+        index: function(mount){
+            qshUtil.header({
+                mount: mount,
+                html: search_temp,
+                style: 'custom',
+                leftItems: [
+                    'noback',
+                    {
+                        name: '消息',
+                        icon: 'xiaoxiHead',
+                        handler: function(){}
+                    }
+                ],
+                rightItems: [
+                    {
+                        icon: 'gengduodiandian',
+                        hasActive: true,
+                        items: [
+                            'xiaoxi',
+                            'zhuye'
+                        ]
+                    }
+                ]
+            })
         }
     };
 

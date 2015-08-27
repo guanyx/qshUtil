@@ -40,3 +40,9 @@ qshUtil.queryString('name') //abc
 qshUtil.localStorage(key, value)    //保存key数据到localStorage
 qshUtil.localStorage(key)   //读取key的值
 ```
+
+####uncertainImage
+备选图片
+```js
+qshUtil.uncertainImage(image, src, replace) //image: 图片dom对象， src：图片地址， replace：图片备选地址
+```

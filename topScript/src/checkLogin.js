@@ -54,7 +54,7 @@
                 }
 
                 if(obj.msg){
-                    if(qshUtil){
+                    if(typeof qshUtil !== 'undefined'){
                         qshUtil.alert(obj);
                     }
                     else {

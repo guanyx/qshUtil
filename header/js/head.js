@@ -214,6 +214,10 @@
     function appendLeft(list){
         var hasBack = false;
         list.forEach(function(item){
+            if(item === 'noback'){
+                hasBack = true;
+                return;
+            }
             if(item.id === 'back'){
                 appendBack(item.icon, item.handler);
                 hasBack = true;

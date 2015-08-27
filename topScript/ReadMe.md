@@ -16,6 +16,7 @@ var qsh_page_urls = {
     'collection': '/m-center/collection.html',          //我的收藏
     'error': '/error/abnormal.html',                    //错误重新验证
     'review': '/brand/prod_pingj.jsp'                   //评价
+    'kefu': '/massage/communicate.jsp',                 //客服  
 };
 ```
 

@@ -11,5 +11,6 @@ var qsh_page_urls = {
     'bill': '/shopping/confirm_order.jsp',
     'collection': '/m-center/collection.html',
     'error': '/error/abnormal.html',
-    'review': '/brand/prod_pingj.jsp'
+    'review': '/brand/prod_pingj.jsp',
+    'kefu': '/massage/communicate.jsp'
 };

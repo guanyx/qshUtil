@@ -95,6 +95,25 @@
                 return localStorage.getItem(key);
             }
         }
+    });
+
+    qshRegister({
+        name: 'uncertainImage',
+        entry: function(image, src, replace){
+            var img = new Image();
+            img.onload = function(){
+                image.src = src;
+            };
+
+            img.onerror = function(){
+                image.src = replace;
+            };
+
+            img.src = src;
+            if(img.complete){
+                image.src = src;
+            }
+        }
     })
 })(window);
 (function (global) {
@@ -313,6 +332,10 @@
     function appendLeft(list){
         var hasBack = false;
         list.forEach(function(item){
+            if(item === 'noback'){
+                hasBack = true;
+                return;
+            }
             if(item.id === 'back'){
                 appendBack(item.icon, item.handler);
                 hasBack = true;
@@ -382,6 +405,31 @@
                 mount: mount,
                 html: search_temp,
                 style: 'custom',
+                rightItems: [
+                    {
+                        icon: 'gengduodiandian',
+                        hasActive: true,
+                        items: [
+                            'xiaoxi',
+                            'zhuye'
+                        ]
+                    }
+                ]
+            })
+        },
+        index: function(mount){
+            qshUtil.header({
+                mount: mount,
+                html: search_temp,
+                style: 'custom',
+                leftItems: [
+                    'noback',
+                    {
+                        name: '消息',
+                        icon: 'xiaoxiHead',
+                        handler: function(){}
+                    }
+                ],
                 rightItems: [
                     {
                         icon: 'gengduodiandian',
@@ -847,17 +895,15 @@
     };
 
     var default_item = ['index', 'baoyang', 'contact', 'uCenter'];
-    var item_template = '<div class="qsh-footer-item {{classes}}" data-href="{{href}}" style="width: {{percent}}%;"> <i class="iconfont icon-{{icon}}"></i> <div>{{text}}</div></div>';
+    var item_template = '<div class="qsh-footer-item {{classes}}" data-href="{{href}}"> <div><i class="iconfont icon-{{icon}}"></i> <div>{{text}}</div></div></div>';
     var wrapper_template = '<div class="qsh-footer">{{content}}</div>';
 
     function footer(options){
         options = options || {};
         var items = options.items || default_item;
 
-        var percent = (1 / items.length) * 100;
         var temps = items.map(function(item){
             var obj = itemMap[item];
-            obj.percent = percent;
             obj.classes = options.current === item ? 'current-foot': '';
             return qshUtil.compileTpl(item_template, obj);
         });
@@ -982,5 +1028,62 @@
     qshRegister({
         name: 'alert',
         entry: qshAlert
+    })
+})(window);
+(function (global) {
+    'use strict';
+
+    var id = 0;
+    var template = '<div id="{{id}}" class="qsh-util-modal"> ' +
+        '<div class="qsh-util-modal-inner"> ' +
+        '</div> ' +
+        '</div>';
+
+    function modal(options){
+        this.id = 'qsh-util-modal-' + (id++);
+        this.content = $(options.mount);
+        this.content.wrap(qshUtil.compileTpl(template, this)).show();
+        this.dom = $('#' + this.id);
+
+        if(options.style){
+            this.dom.find('.qsh-util-modal-inner').css(options.style);
+        }
+
+        var _that = this;
+        this.dom.on('click', function(e){
+            if(e.target === this){
+                _that.hide();
+            }
+        });
+    }
+
+    modal.prototype.show = function(){
+        if(!$(document.body).hasClass('modal-open')){
+            $(document.body).addClass('modal-open');
+            this.boostrapModal = true;
+        }
+        this.dom.show();
+        setTimeout(function(){
+            console.log(this);
+            this.dom.addClass('qsh-show');
+        }.bind(this), 20);
+    };
+
+    modal.prototype.hide = function(){
+        if(this.boostrapModal){
+            $(document.body).removeClass('modal-open');
+            this.boostrapModal = false;
+        }
+        this.dom.removeClass('qsh-show');
+        setTimeout(function(){
+            this.dom.hide();
+        }.bind(this), 350)
+    };
+
+    qshRegister({
+        name: 'modal',
+        entry: function(options){
+            return new modal(options);
+        }
     })
 })(window);

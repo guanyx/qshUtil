@@ -10,11 +10,14 @@
 
   outline: 1px solid #e7e7e7;
 
-  display: table;
+  display: flex;
+  flex-flow: row nowrap;
 
   &-item{
-    display: table-cell;
-    vertical-align: middle;
+    flex-grow: 1;
+    display: flex;
+    align-content: center;
+    justify-content: center;
     text-align: center;
 
     i{

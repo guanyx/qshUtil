@@ -25,17 +25,15 @@
     };
 
     var default_item = ['index', 'baoyang', 'contact', 'uCenter'];
-    var item_template = '<div class="qsh-footer-item {{classes}}" data-href="{{href}}" style="width: {{percent}}%;"> <i class="iconfont icon-{{icon}}"></i> <div>{{text}}</div></div>';
+    var item_template = '<div class="qsh-footer-item {{classes}}" data-href="{{href}}"> <div><i class="iconfont icon-{{icon}}"></i> <div>{{text}}</div></div></div>';
     var wrapper_template = '<div class="qsh-footer">{{content}}</div>';
 
     function footer(options){
         options = options || {};
         var items = options.items || default_item;
 
-        var percent = (1 / items.length) * 100;
         var temps = items.map(function(item){
             var obj = itemMap[item];
-            obj.percent = percent;
             obj.classes = options.current === item ? 'current-foot': '';
             return qshUtil.compileTpl(item_template, obj);
         });
