@@ -6,9 +6,13 @@
     var timer, hideTimer;
     var duration = 2000;
 
-    qshRegister({
-        name: 'toast',
-        entry: function(message){
+    var toast;
+
+    if(qsh_object.const.shell === 'qsh'){
+        toast = global.APP.toast.bind(APP);
+    }
+    else {
+        toast = function(message){
             clearTimeout(timer);
             clearTimeout(hideTimer);
             $toast.hide();
@@ -32,6 +36,11 @@
                     $toast.hide();
                 }, 400);
             }, duration);
-        }
+        };
+    }
+
+    qshRegister({
+        name: 'toast',
+        entry: toast
     })
 })(window);

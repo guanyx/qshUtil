@@ -98,12 +98,7 @@
     }
 
     function back(){
-        if(qsh_object.shell === 'qsh'){
-            //调用APP接口返回
-        }
-        else {
-            history.back();
-        }
+        qshUtil.back();
     }
 
     function appendSkeleton(options, style, fixed){

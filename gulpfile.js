@@ -2,10 +2,13 @@ var gulp = require('gulp');
 var $ = require('gulp-load-plugins')();
 var sequence = require('run-sequence');
 var del = require('del');
+var _ = require('lodash');
+var fs = require('fs');
 
 gulp.task('script', function(){
     var sources = [
         'qsh-lite.js',
+        'global/global.js',
         'util/js/util.js',
         'header/js/head.js',
         'header/js/preHead.js',
@@ -73,10 +76,27 @@ gulp.task('style', function(){
         .pipe($.size({title: 'styles'}));
 });
 
+gulp.task('rev:lite', function(){
+    return gulp.src(['dist/css/*.css', 'dist/js/*.js'], {base: 'dist/'})
+        .pipe($.rev())
+        .pipe(gulp.dest('dist/'))
+        .pipe($.rev.manifest())
+        .pipe(gulp.dest('dist/'))
+});
+
+gulp.task('rev:top', function(){
+    return gulp.src(['topScript/site/*.js'], {base: 'topScript/'})
+        .pipe($.rev())
+        .pipe(gulp.dest('topScript/'))
+        .pipe($.rev.manifest())
+        .pipe(gulp.dest('topScript/'))
+});
+
 gulp.task('styles', function(done){
     return sequence(
         ['css:less', 'css:sass'],
         'style',
+        'rev:lite',
         done
     )
 });
@@ -85,16 +105,32 @@ gulp.task('topScript', function(){
     return gulp.src('topScript/src/*.js')
         .pipe($.concat('top.js'))
         .pipe($.uglify())
-        .pipe(gulp.dest('topScript/dist'));
+        .pipe(gulp.dest('topScript/site'));
 });
 
 gulp.task('clean', function(){
     return del(['./tmp']);
 });
 
+gulp.task('clean:dist', function(){
+    return del(['./dist', './topScript/site'])
+});
+
+gulp.task('concat:manifest', function(done){
+    var lite = JSON.parse(fs.readFileSync('./dist/rev-manifest.json', {encoding: 'utf-8'}));
+    var top = JSON.parse(fs.readFileSync('./topScript/rev-manifest.json', {encoding: 'utf-8'}));
+
+    var obj = _.assign(lite, top);
+    fs.writeFileSync('./rev-manifest.json', JSON.stringify(obj));
+    done()
+});
+
 gulp.task('default', function(done){
     sequence(
+        'clean:dist',
         ['script', 'styles', 'topScript'],
+        'rev:top',
+        'concat:manifest',
         'clean',
         done
     )

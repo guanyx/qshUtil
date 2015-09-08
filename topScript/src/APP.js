@@ -1,6 +1,10 @@
 (function (global) {
     'use strict';
 
+    if(qsh_object.const.shell !== 'qsh'){
+        return;
+    }
+
     var app = {
         queue: {},  //方法与回调映射
         callback: function(){
@@ -54,8 +58,12 @@
     });*/
 
     //返回的示例
-    app.back = function(){
-        app.apply('History.go', '-1')
+    app.back = function(num){
+        app.apply('History.back', num)
+    };
+
+    app.toast = function(msg){
+        app.apply('Message.toast', msg);
     };
 
     global.APP = app;

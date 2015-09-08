@@ -43,6 +43,25 @@ qshUtil.localStorage(key)   //读取key的值
 
 ####uncertainImage
 备选图片
+
 ```js
 qshUtil.uncertainImage(image, src, replace) //image: 图片dom对象， src：图片地址， replace：图片备选地址
+```
+
+####absoluteImg
+图片路径转换
+
+```js
+//input: /group****.jpg output: http://img.8673h.com/group****.jpg
+//input: /images/****.jpg   output: http://m.8673h.com/images/****.jpg
+qshUtil.absoluteImg(image) 
+```
+
+####back
+页面返回
+
+```js
+//默认调用history.back()
+//如在APP打开，则调用APP的返回接口
+qshUtil.back();
 ```

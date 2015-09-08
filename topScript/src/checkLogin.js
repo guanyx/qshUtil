@@ -54,12 +54,14 @@
                 }
 
                 if(obj.msg){
-                    if(typeof qshUtil !== 'undefined'){
-                        qshUtil.alert(obj);
+                    if(qsh_object.const.shell === 'qsh'){
+                        APP.toast(obj.msg);
+                        //alert(obj.msg);
                     }
-                    else {
-                        obj.ok();
+                    else if(typeof qshUtil !== 'undefined'){
+                        qshUtil.toast(obj.msg);
                     }
+                    obj.ok();
                 }
             },
             error: function() {

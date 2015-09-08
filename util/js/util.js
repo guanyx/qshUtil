@@ -21,13 +21,17 @@
     qshRegister({
         name: 'resizeImg',
         entry: function(size, img){
-            img = img ? 'http://img.8673h.com/' + img : "http://m.8673h.com/images/pro_pic.png";
+            img = prefixUrl(img);
             var reg = /^.*(\..*?)$/g;
             var arr = reg.exec(img);
             img = img.replace(arr[1], sizeStr(size) + arr[1]);
             return img;
         }
     });
+
+    function prefixUrl(img){
+        return img ? 'http://img.8673h.com/' + img : "http://m.8673h.com/images/pro_pic.png";
+    }
 
     function sizeStr(size){
         var pic_size = size * ratio;
@@ -47,9 +51,26 @@
             pic_size = 800
         }
 
-        var size_str = '_' + pic_size + 'x' + pic_size;
-        return size_str;
+        return '_' + pic_size + 'x' + pic_size;
     }
+
+    qshRegister({
+        name: 'absoluteImg',
+        entry: function(url){
+            url.toString();
+            if(url[0] === '/'){
+                url = url.substring(1);
+            }
+            if(url.substr(0, 5) === 'group'){
+                url = prefixUrl(url);
+            }
+            else if(url.substr(0, 6) === 'images'){
+                url = 'http://m.8673h.com/' + url;
+            }
+
+            return url;
+        }
+    });
 
     function getQueryStringByName(name){
         var result = location.search.match(new RegExp("[\?\&]" + name+ "=([^\&]+)","i"));
@@ -67,12 +88,17 @@
     qshRegister({
         name: 'localStorage',
         entry: function(key, value){
-            if(value){
-                localStorage.setItem(key, value);
+            try{
+                if(value){
+                    localStorage.setItem(key, value);
+                }
+                else {
+                    return localStorage.getItem(key);
+                }
+            }catch(e){
+
             }
-            else {
-                return localStorage.getItem(key);
-            }
+
         }
     });
 
@@ -91,6 +117,20 @@
             img.src = src;
             if(img.complete){
                 image.src = src;
+            }
+        }
+    });
+
+    qshRegister({
+        name: 'back',
+        entry: function(num){
+            num = num || -1;
+            if(qsh_object.const.shell === 'qsh'){
+                //调用APP接口返回
+                APP.back(num);
+            }
+            else {
+                history.back();
             }
         }
     })
